@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>导航</title>
+    <title>个人简历导航</title>
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline';">
     
@@ -41,6 +41,7 @@
         }
 
         .lang-btn {
+            /* 磨砂玻璃质感 */
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -49,7 +50,7 @@
             padding: 8px 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px; /* 稍微缩小图标和文字的间距 */
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,11 +70,11 @@
             background: rgba(230, 230, 230, 0.8);
         }
 
-        .lang-icon-svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            opacity: 0.8;
+        /* Emoji 图标样式调整 */
+        .lang-icon-emoji {
+            font-size: 16px;
+            line-height: 1;
+            margin-top: 1px; /* 微调垂直对齐 */
         }
 
         /* --- 主容器 --- */
@@ -93,6 +94,7 @@
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
+        /* 语言切换时的文字过渡 */
         .app-name.fade-changing {
             opacity: 0.5;
             transform: scale(0.98);
@@ -149,7 +151,7 @@
             .app-icon svg { width: 40px; height: 40px; }
             .app-name { font-size: 14px; }
             .lang-btn { padding: 6px 12px; font-size: 13px; }
-            .lang-icon-svg { width: 16px; height: 16px; }
+            .lang-icon-emoji { font-size: 14px; }
         }
     </style>
 </head>
@@ -157,9 +159,7 @@
 
     <div class="lang-switch-container">
         <button id="langToggleBtn" class="lang-btn" aria-label="Toggle Language">
-            <svg class="lang-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 5.5C10 6.33 9.33 7 8.5 7C7.67 7 7 6.33 7 5.5C7 4.67 7.67 4 8.5 4C9.33 4 10 4.67 10 5.5ZM17.5 8C17.5 8.83 16.83 9.5 16 9.5C15.17 9.5 14.5 8.83 14.5 8C14.5 7.17 15.17 6.5 16 6.5C16.83 6.5 17.5 7.17 17.5 8ZM16 17.5C16 18.33 15.33 19 14.5 19C13.67 19 13 18.33 13 17.5C13 16.67 13.67 16 14.5 16C15.33 16 16 16.67 16 17.5ZM8 17C8 17.83 7.33 18.5 6.5 18.5C5.67 18.5 5 17.83 5 17C5 16.17 5.67 15.5 6.5 15.5C7.33 15.5 8 16.17 8 17ZM19.27 15.16C18.64 16.7 17.48 17.95 16 18.76V19C16 19.55 15.55 20 15 20H14V21.5C14 21.78 13.78 22 13.5 22H10.5C10.22 22 10 21.78 10 21.5V20H9C8.45 20 8 19.55 8 19V18.76C6.52 17.95 5.36 16.7 4.73 15.16C4.27 14.04 4 12.83 4 11.59C4 11.05 4.05 10.53 4.13 10.03C4.91 10.63 5.9 11 7 11C7 11.55 7.45 12 8 12V13.5C8 13.78 8.22 14 8.5 14H11.5C11.78 14 12 13.78 12 13.5V12C12.55 12 13 11.55 13 11C14.1 11 15.09 10.63 15.87 10.03C15.95 10.53 16 11.05 16 11.59C16 12.83 15.73 14.04 15.27 15.16H19.27ZM20 12C20 12.68 19.92 13.34 19.77 13.97C19.92 13.34 20 12.68 20 12Z"/>
-            </svg>
+            <span class="lang-icon-emoji">🌐</span>
             <span id="langText" data-en="EN" data-cn="中">中</span>
         </button>
     </div>
@@ -183,7 +183,7 @@
         const langTextDisplay = document.getElementById('langText');
         const appNameDisplay = document.getElementById('appName');
 
-        // 修改：默认语言为 'cn'
+        // 默认语言为 'cn'
         let currentLang = 'cn';
 
         langBtn.addEventListener('click', () => {
