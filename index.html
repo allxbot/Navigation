@@ -193,12 +193,12 @@
         const langTextDisplay = document.getElementById('langText');
         const appNameDisplay = document.getElementById('appName');
 
-        // 当前语言状态 (默认英语 'en')
-        let currentLang = 'en';
+        // 当前语言状态 (默认中文 'cn')
+        let currentLang = 'cn';
 
         langBtn.addEventListener('click', () => {
             // 1. 切换语言状态
-            currentLang = currentLang === 'en' ? 'cn' : 'en';
+            currentLang = currentLang === 'cn' ? 'en' : 'cn';
 
             // 2. 添加一个临时的过渡类，让文字切换更平滑
             appNameDisplay.classList.add('fade-changing');
